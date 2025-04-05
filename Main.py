@@ -38,7 +38,6 @@ rightButton = Button((0,500), "buttonright.png")
 alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
 while running: 
     if(shop == False):
-    
         if(draws.__len__() != 5):
                         for i in range(draws.__len__(), 5):
                             draws.append(random.randint(1,25))
@@ -80,7 +79,6 @@ while running:
                             difference = 1 - gold
                             gold += (difference*-1)
                     elif(rnd == 9):
-                        #fix
                         for i in draws:
                             draws.pop(0)
                     elif(rnd == 10):
@@ -143,51 +141,22 @@ while running:
         textsend = font.render(f"Coins: {gold}", True, Tcolor)
         screen.blit(textsend, (500, 0))
         if(heartCount == 8):
-            screen.blit(hearts, (0, 0))
-            screen.blit(hearts, (50, 0))
-            screen.blit(hearts, (100, 0))
-            screen.blit(hearts, (150, 0))
-            screen.blit(hearts, (200, 0)) 
-            screen.blit(hearts, (250, 0))
-            screen.blit(hearts, (300, 0))
             screen.blit(hearts, (350, 0))
-        elif(heartCount == 7):
-            screen.blit(hearts, (0, 0))
-            screen.blit(hearts, (50, 0))
-            screen.blit(hearts, (100, 0))
-            screen.blit(hearts, (150, 0))
-            screen.blit(hearts, (200, 0)) 
-            screen.blit(hearts, (250, 0))
+        if(heartCount == 7):
             screen.blit(hearts, (300, 0))
-        elif(heartCount == 6):
-            screen.blit(hearts, (0, 0))
-            screen.blit(hearts, (50, 0))
-            screen.blit(hearts, (100, 0))
-            screen.blit(hearts, (150, 0))
-            screen.blit(hearts, (200, 0)) 
+        if(heartCount == 6):
             screen.blit(hearts, (250, 0)) 
-        elif(heartCount == 5):
-            screen.blit(hearts, (0, 0))
-            screen.blit(hearts, (50, 0))
-            screen.blit(hearts, (100, 0))
-            screen.blit(hearts, (150, 0))
+        if(heartCount == 5):
             screen.blit(hearts, (200, 0))
-        elif(heartCount == 4):
-            screen.blit(hearts, (0, 0))
-            screen.blit(hearts, (50, 0))
-            screen.blit(hearts, (100, 0))
+        if(heartCount == 4):
             screen.blit(hearts, (150, 0))
-        elif(heartCount == 3):
-            # print(draws)
-            screen.blit(hearts, (0, 0))
-            screen.blit(hearts, (50, 0))
+        if(heartCount == 3):
             screen.blit(hearts, (100, 0))
-        elif(heartCount == 2):
-            screen.blit(hearts, (0, 0))
+        if(heartCount == 2):
             screen.blit(hearts, (50, 0))
-        elif(heartCount == 1):
+        if(heartCount == 1):
             screen.blit(hearts, (0, 0))
-        elif(heartCount == 0):
+        if(heartCount == 0):
             gold = 0
             screen.fill((0,0,0))
             shop = True
@@ -200,17 +169,27 @@ while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN and totalGold >= 5:
-                q += 1
-                if(q == 1):
-                    alphabet = pygame.image.load(os.path.join('Artwork/pack3'))
-                if(q == 2):
-                    r = random.randrange(1, 10)
-                    alphabet = pygame.image.load(os.path.join(f'Artwork/a{r}'))
-                else:
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if(nextButton.check_press == True):
+                    shop = False
                     q = 0
-                    alphabet = pygame.image.load(os.path.join('artwork/pack1'))
-        screen.blit(alphabet, (300, 375))            
+                    screen.fill((0,0,0))
+                elif(totalGold >= 5):
+                    q += 1
+                    if(q == 1):
+                        screen.fill((0,0,0))
+                        alphabet = pygame.image.load(os.path.join('Artwork/pack3.png'))
+                    if(q == 2):
+                        r = random.randrange(1, 10)
+                        screen.fill((0,0,0))
+                        alphabet = pygame.image.load(os.path.join(f'Artwork/a{r}.png'))
+                    else:
+                        q = 0
+                        screen.fill((0,0,0))
+                        alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
+        nextButton.draw(screen)
+        screen.blit(alphabet, (500, 200))            
         pygame.display.flip()
         clock.tick(60)
+        
 pygame.quit()
