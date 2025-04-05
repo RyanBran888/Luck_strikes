@@ -125,9 +125,9 @@ while running:
                         gold += 5
                     else:
                         gold+= 1
-                screen.fill((0,0,0))
-                screen.blit(blankCard, (950, 200))
-                Buttons = False         
+                    screen.fill((0,0,0))
+                    screen.blit(blankCard, (950, 200))
+                    Buttons = False         
     nextButton.draw(screen)
     endButton.draw(screen)
     screen.blit(current, (450,375))
