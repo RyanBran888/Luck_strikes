@@ -50,7 +50,7 @@ while running:
             ree = 0
         if(draws.__len__() != 5):
                         for i in range(draws.__len__(), 5):
-                            draws.append(random.randint(1,25))
+                            draws.append(random.randint(1,30))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -126,6 +126,16 @@ while running:
                         gold+= 4
                     elif(rnd == 25):
                         gold+= 3
+                    elif(rnd == 26):
+                        gold -= 1
+                    elif(rnd == 27):
+                        gold -= 2
+                    elif(rnd == 28):
+                        gold -= 3
+                    elif(rnd == 29):
+                        gold -=4
+                    elif(rnd == 30):
+                        gold -= 5
                 if(endButton.check_press(event.pos)):
                     totalGold += gold
                     gold = 0
