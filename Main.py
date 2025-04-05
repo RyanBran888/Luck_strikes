@@ -19,6 +19,5 @@ while running:
         screen.blit(img, (100,100))
     pygame.display.flip()
     clock.tick(60)
-
     
 pygame.quit()
