@@ -200,6 +200,7 @@ while running:
                     alphabet = pygame.image.load(os.path.join('Artwork/pack3'))
                 else:
                     alphabet = random.randrange(1, 10)
+                    
         screen.blit(alphabet, (300, 375))            
         pygame.display.flip()
         clock.tick(60)
