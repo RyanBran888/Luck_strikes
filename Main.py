@@ -77,7 +77,7 @@ while running:
                 elif(rnd == 9):
                     #fix
                     for i in draws:
-                        draws.pop(i)
+                        draws.pop(0)
                 elif(rnd == 10):
                     gold += 1
                 elif(rnd == 11):
