@@ -140,21 +140,21 @@ while running:
         screen.blit(current, (450,375))
         textsend = font.render(f"Coins: {gold}", True, Tcolor)
         screen.blit(textsend, (500, 0))
-        if(heartCount == 8):
+        if(heartCount >= 8):
             screen.blit(hearts, (350, 0))
-        if(heartCount == 7):
+        if(heartCount >= 7):
             screen.blit(hearts, (300, 0))
-        if(heartCount == 6):
+        if(heartCount >= 6):
             screen.blit(hearts, (250, 0)) 
-        if(heartCount == 5):
+        if(heartCount >= 5):
             screen.blit(hearts, (200, 0))
-        if(heartCount == 4):
+        if(heartCount >= 4):
             screen.blit(hearts, (150, 0))
-        if(heartCount == 3):
+        if(heartCount >= 3):
             screen.blit(hearts, (100, 0))
-        if(heartCount == 2):
+        if(heartCount >= 2):
             screen.blit(hearts, (50, 0))
-        if(heartCount == 1):
+        if(heartCount >= 1):
             screen.blit(hearts, (0, 0))
         if(heartCount == 0):
             gold = 0
@@ -170,6 +170,7 @@ while running:
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                print("meow")
                 if(nextButton.check_press == True):
                     shop = False
                     q = 0
