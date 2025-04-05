@@ -9,8 +9,12 @@ running = True
 hearts = pygame.image.load(os.path.join('Artwork/Heart.png'))
 current = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.png'))
 draws = []
+arts = []
 gold = 0
 e = 0
+x = 0
+y = 0
+t = 0
 totalGold = 0
 heartCount = 3
 shop = False
@@ -175,9 +179,9 @@ while running:
                 print("meow")
                 print(q)
                 if(nextButton.check_press == True):
-                    shop = False
                     q = 0
                     screen.fill((0,0,0))
+                    shop = False
                 if(totalGold >= 5):
                     q += 1
                     print(q)
@@ -188,13 +192,27 @@ while running:
                         alphabet = pygame.image.load(os.path.join('Artwork/pack3.png'))
                     if(q == 2):
                         r = random.randrange(1, 10)
+                        
                         screen.fill((0,0,0))
                         alphabet = pygame.image.load(os.path.join(f'Artwork/a{r}.png'))
+                        if(t == 0):    
+                            arts.append(pygame.transform.scale(alphabet, (32,40)))
+                            t += 1
+                            for i in arts:
+                                screen.blit(i, (x,y))
+                                x += 30
+                                if(x == 1280):
+                                    y += 30
+                                    x = 0
                     elif(q==3):
                         q = 0
                         totalGold -= 5
+                        t = 0
+                        x = 0
+                        y = 0
                         screen.fill((0,0,0))
                         alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
+                        
         nextButton.draw(screen)
         screen.blit(alphabet, (500, 200))            
         pygame.display.flip()
