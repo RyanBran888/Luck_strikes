@@ -8,11 +8,12 @@ clock = pygame.time.Clock()
 running = True
 hearts = pygame.image.load(os.path.join('Artwork/Heart.png'))
 current = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.png'))
-draw = []
+draws = []
 gold = 0
 totalGold = 0
 heartCount = 3
 blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
+screen.blit(blankCard, (950, 200))   
 class Button(object):
     def __init__(self, position, filename):
         self.image = pygame.image.load(os.path.join(f'Artwork/{filename}'))
@@ -25,13 +26,18 @@ class Button(object):
         return False
 nextButton = Button((1180,670), "Drawcard.png")
 endButton = Button((0,670), "Endround.png")
-while running:
+while running: 
+    if(draws.__len__() != 5):
+                    for i in range(draws.__len__(), 5):
+                        draws.append(random.randint(1,25))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN: 
             if nextButton.check_press(event.pos):
-                rnd = random.randint(1,25)
+                print(draws)
+                draws.pop(0)
+                rnd = draws[0]
                 current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png'))
                 if(rnd == 1):
                     heartCount = 0
@@ -40,8 +46,9 @@ while running:
                 elif(rnd == 3):
                     gold += 10
                 elif(rnd == 4):
-                    # peak
-                    rnd = 5
+                    screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[1]}.png')), (100, 100))
+                    screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[2]}.png')), (450, 25))
+                    screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[3]}.png')), (800, 100))
                 elif(rnd == 5):
                     heartCount -= 1
                 elif(rnd == 6):
@@ -57,8 +64,10 @@ while running:
                         difference = 1 - gold
                         gold += (difference*-1)
                 elif(rnd == 9):
-                    rnd = 10
-                    #shuffle
+                    draws.pop[1]
+                    draws.pop[2]
+                    draws.pop[3]
+                    draws.pop[4]
                 elif(rnd == 10):
                     gold += 1
                 elif(rnd == 11):
@@ -95,7 +104,7 @@ while running:
                     gold+= 3
             #if(endButton.check_press(event.pos)):
             
-    screen.blit(blankCard, (950, 200))            
+             
     nextButton.draw(screen)
     endButton.draw(screen)
     screen.blit(current, (450,375))
@@ -111,6 +120,7 @@ while running:
         screen.blit(hearts, (100, 0))
         screen.blit(hearts, (150, 0))
     elif(heartCount == 3):
+       # print(draws)
         screen.blit(hearts, (0, 0))
         screen.blit(hearts, (50, 0))
         screen.blit(hearts, (100, 0))
