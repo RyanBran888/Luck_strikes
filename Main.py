@@ -178,10 +178,11 @@ while running:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 print("meow")
                 print(q)
-                if(nextButton.check_press == True):
+                if(nextButton.check_press(event.pos)):
                     q = 0
-                    screen.fill((0,0,0))
                     shop = False
+                    screen.fill((0,0,0))
+                    
                 if(totalGold >= 5):
                     q += 1
                     print(q)
