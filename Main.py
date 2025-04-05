@@ -13,6 +13,8 @@ gold = 0
 totalGold = 0
 heartCount = 3
 runOne = False
+#font = pygame.font.SysFont("Ariel", 20)
+#Tcolor = (255, 255, 255)
 blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
 screen.blit(blankCard, (950, 200))   
 class Button(object):
@@ -113,22 +115,24 @@ while running:
                     gold+= 3
             #if(endButton.check_press(event.pos)):
             
-            if(leftButton.check_press(event.pos)):
-                heartCount += 1
-                screen.fill((0,0,0))
-                screen.blit(blankCard, (950, 200))
-            elif(rightButton.check_press(event.pos)):
-                if(rnd == 13):
-                    gold += 5
-                else:
-                    gold+= 1
-                screen.fill((0,0,0))
-                screen.blit(blankCard, (950, 200))
-        screen.fill((0,0,0))
-        screen.blit(blankCard, (950, 200))          
+          ##  if(leftButton.check_press(event.pos)):
+       ##         heartCount += 1
+        ##        screen.fill((0,0,0))
+       ##         screen.blit(blankCard, (950, 200))
+      ##      elif(rightButton.check_press(event.pos)):
+       ##         if(rnd == 13):
+        ##            gold += 5
+         ##       else:
+                ##    gold+= 1
+         ##       screen.fill((0,0,0))
+          ##      screen.blit(blankCard, (950, 200))
+       ## screen.fill((0,0,0))
+       ## screen.blit(blankCard, (950, 200))          
     nextButton.draw(screen)
     endButton.draw(screen)
     screen.blit(current, (450,375))
+    #textsend = font.render(f"Coins: {gold}", True, Tcolor)
+   # screen.blit(textsend, (500, 0))
     if(heartCount == 8):
         screen.blit(hearts, (0, 0))
         screen.blit(hearts, (50, 0))
