@@ -12,6 +12,7 @@ draws = []
 gold = 0
 totalGold = 0
 heartCount = 3
+runOne = False
 blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
 screen.blit(blankCard, (950, 200))   
 class Button(object):
@@ -35,9 +36,14 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN: 
             if nextButton.check_press(event.pos):
+                if(runOne):
+                        if(rnd == 4 or rnd == 5 or rnd == 8):
+                            screen.fill((0,0,0))
+                            screen.blit(blankCard, (950, 200))  
                 print(draws)
                 draws.pop(0)
                 rnd = draws[0]
+                runOne = True
                 current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png'))
                 if(rnd == 1):
                     heartCount = 0
@@ -50,13 +56,13 @@ while running:
                     screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[2]}.png')), (450, 25))
                     screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[3]}.png')), (800, 100))
                 elif(rnd == 5):
-                    heartCount -= 1
+                    heartCount = heartCount - 1
                 elif(rnd == 6):
                     heartCount += 1
                 elif(rnd == 7):
                     gold = gold * 2
                 elif(rnd == 8):
-                    heartCount -= 1
+                    heartCount = heartCount - 1
                     if(gold % 2 == 0):
                        gold = gold/2
                     else:
@@ -64,10 +70,8 @@ while running:
                         difference = 1 - gold
                         gold += (difference*-1)
                 elif(rnd == 9):
-                    draws.pop[1]
-                    draws.pop[2]
-                    draws.pop[3]
-                    draws.pop[4]
+                    for i in draws:
+                        draws.pop(i)
                 elif(rnd == 10):
                     gold += 1
                 elif(rnd == 11):
