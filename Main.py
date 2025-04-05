@@ -10,7 +10,7 @@ hearts = pygame.image.load(os.path.join('Artwork/Heart.png'))
 current = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.png'))
 draw = []
 heartCount = 3
-
+blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
 class Button(object):
     def __init__(self, position, filename):
         self.image = pygame.image.load(os.path.join(f'Artwork/{filename}'))
@@ -33,7 +33,7 @@ while running:
                 current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png')) 
             #if(nextButton.check_press(event.pos)):
             
-                
+    screen.blit(blankCard, (950, 200))            
     nextButton.draw(screen)
     endButton.draw(screen)
     screen.blit(current, (450,375))
