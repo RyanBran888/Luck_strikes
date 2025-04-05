@@ -13,6 +13,7 @@ gold = 0
 totalGold = 0
 heartCount = 3
 shop = False
+q = 0
 runOne = False
 Buttons = False
 font = pygame.font.SysFont("Arial", 30)
@@ -33,6 +34,7 @@ nextButton = Button((1180,670), "Drawcard.png")
 endButton = Button((0,670), "Endround.png")
 leftButton = Button((1180,500), "leftButton.png")
 rightButton = Button((0,500), "buttonright.png")
+alphabet = pygame.image.load(os.path.join('Artwork/pack1'))
 while running: 
     if(shop == False):
     
@@ -192,6 +194,13 @@ while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN and totalGold >= 5:
+                q += 1
+                if(q == 1):
+                    alphabet = pygame.image.load(os.path.join('Artwork/pack3'))
+                else:
+                    alphabet = random.randrange(1, 10)
+        screen.blit(alphabet, (300, 375))            
         pygame.display.flip()
         clock.tick(60)
 pygame.quit()
