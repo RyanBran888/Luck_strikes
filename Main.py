@@ -27,6 +27,8 @@ class Button(object):
         return False
 nextButton = Button((1180,670), "Drawcard.png")
 endButton = Button((0,670), "Endround.png")
+leftButton = Button((1180,500), "leftButton.png")
+rightButton = Button((0,500), "buttonright.png")
 while running: 
     if(draws.__len__() != 5):
                     for i in range(draws.__len__(), 5):
@@ -70,6 +72,7 @@ while running:
                         difference = 1 - gold
                         gold += (difference*-1)
                 elif(rnd == 9):
+                    #fix
                     for i in draws:
                         draws.pop(i)
                 elif(rnd == 10):
@@ -79,11 +82,13 @@ while running:
                 elif(rnd == 12):
                     gold = gold *0
                 elif(rnd == 13):
-                    #multiuple choice
-                    rnd = 14
+                    # fix
+                    leftButton.draw(screen)
+                    rightButton.draw(screen)
                 elif(rnd == 14):
-                    #ahgain more choice
-                    rnd = 15
+                    # fix
+                    leftButton.draw(screen)
+                    rightButton.draw(screen)
                 elif(rnd == 15):
                     heartCount+= 2
                 elif(rnd == 16):
@@ -108,11 +113,47 @@ while running:
                     gold+= 3
             #if(endButton.check_press(event.pos)):
             
-             
+            if(leftButton.check_press(event.pos)):
+                heartCount += 1
+                screen.fill((0,0,0))
+                screen.blit(blankCard, (950, 200))
+            elif(rightButton.check_press(event.pos)):
+                if(rnd == 13):
+                    gold += 5
+                else:
+                    gold+= 1
+                screen.fill((0,0,0))
+                screen.blit(blankCard, (950, 200))
+        screen.fill((0,0,0))
+        screen.blit(blankCard, (950, 200))          
     nextButton.draw(screen)
     endButton.draw(screen)
     screen.blit(current, (450,375))
-    if(heartCount == 5):
+    if(heartCount == 8):
+        screen.blit(hearts, (0, 0))
+        screen.blit(hearts, (50, 0))
+        screen.blit(hearts, (100, 0))
+        screen.blit(hearts, (150, 0))
+        screen.blit(hearts, (200, 0)) 
+        screen.blit(hearts, (250, 0))
+        screen.blit(hearts, (300, 0))
+        screen.blit(hearts, (350, 0))
+    elif(heartCount == 7):
+        screen.blit(hearts, (0, 0))
+        screen.blit(hearts, (50, 0))
+        screen.blit(hearts, (100, 0))
+        screen.blit(hearts, (150, 0))
+        screen.blit(hearts, (200, 0)) 
+        screen.blit(hearts, (250, 0))
+        screen.blit(hearts, (300, 0))
+    elif(heartCount == 6):
+        screen.blit(hearts, (0, 0))
+        screen.blit(hearts, (50, 0))
+        screen.blit(hearts, (100, 0))
+        screen.blit(hearts, (150, 0))
+        screen.blit(hearts, (200, 0)) 
+        screen.blit(hearts, (250, 0)) 
+    elif(heartCount == 5):
         screen.blit(hearts, (0, 0))
         screen.blit(hearts, (50, 0))
         screen.blit(hearts, (100, 0))
