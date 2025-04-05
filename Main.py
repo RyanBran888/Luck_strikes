@@ -17,7 +17,7 @@ shop = False
 q = 0
 runOne = False
 Buttons = False
-font = pygame.font.SysFont("Arial", 30)
+font = pygame.font.SysFont("Tahoma", 30)
 Tcolor = (255, 255, 255)
 blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
 screen.blit(blankCard, (950, 200))   
@@ -163,6 +163,8 @@ while running:
         pygame.display.flip()
         clock.tick(60)
     elif(shop):
+        textsend = font.render(f"Coins: {totalGold}", True, Tcolor)
+        screen.blit(textsend, (500, 0))
         if(e == 0):
             screen.fill((0,0,0))
             e += 1
@@ -171,21 +173,26 @@ while running:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 print("meow")
+                print(q)
                 if(nextButton.check_press == True):
                     shop = False
                     q = 0
                     screen.fill((0,0,0))
-                elif(totalGold >= 5):
+                if(totalGold >= 5):
                     q += 1
+                    print(q)
                     if(q == 1):
+                        print("eaeaeae")
                         screen.fill((0,0,0))
+                        
                         alphabet = pygame.image.load(os.path.join('Artwork/pack3.png'))
                     if(q == 2):
                         r = random.randrange(1, 10)
                         screen.fill((0,0,0))
                         alphabet = pygame.image.load(os.path.join(f'Artwork/a{r}.png'))
-                    else:
+                    elif(q==3):
                         q = 0
+                        totalGold -= 5
                         screen.fill((0,0,0))
                         alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
         nextButton.draw(screen)
