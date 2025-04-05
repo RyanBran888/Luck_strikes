@@ -12,7 +12,7 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN: 
-                current = pygame.image.load(os.path.join('data', 'card1.png'))
+                current = pygame.image.load(os.path.join('data', 'Artwork/card1.png'))
              
     screen.blit(current, (100, 100))
     pygame.display.flip()
