@@ -14,7 +14,7 @@ heartCount = 3
 class Button(object):
     def init(self, position, filename):
         self.image = pygame.image.load(os.path.join(f'Artwork/{filename}'))
-        self.rect = self.image.get_rect(bottomright=position)
+        self.rect = self.image.get_rect(topleft=position)
     def draw(self,surface):
         surface.draw(self.image,self.rect)
     def check_press(self,position):
