@@ -5,16 +5,18 @@ pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
-current = pygame
+current = pygame.image.load(os.path.join('Artwork/card1.png'))
+draw = []
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN: 
-                current = pygame.image.load(os.path.join('data', 'Artwork/card1.png'))
-             
-    screen.blit(current, (100, 100))
+                draw.append(current)
+                    
+    for img in draw:
+        screen.blit(img, (0, 0)) 
     pygame.display.flip()
     clock.tick(60)
 
