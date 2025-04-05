@@ -7,34 +7,35 @@ screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 hearts = pygame.image.load(os.path.join('Artwork/Heart.png'))
-current = pygame.image.load(os.path.join('Artwork/card1.png'))
+current = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.png'))
 draw = []
 heartCount = 3
 
 class Button(object):
-    def init(self, position, filename):
+    def __init__(self, position, filename):
         self.image = pygame.image.load(os.path.join(f'Artwork/{filename}'))
         self.rect = self.image.get_rect(topleft=position)
     def draw(self,surface):
-        surface.draw(self.image,self.rect)
+        surface.blit(self.image,self.rect)
     def check_press(self,position):
         if(self.rect.collidepoint(*position)):
             return True
         return False
-nextButton = Button((100,100), "Drawcard.png")
+nextButton = Button((1180,670), "Drawcard.png")
+endButton = Button((0,670), "Endround.png")
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN: 
-                rnd = random.randint(1,25)
-                current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png')) 
         if event.type == pygame.MOUSEBUTTONDOWN: 
             if nextButton.check_press(event.pos):
-                print("meow meow")
+                rnd = random.randint(1,25)
+                current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png')) 
+            #if(nextButton.check_press(event.pos)):
+            
                 
     nextButton.draw(screen)
+    endButton.draw(screen)
     screen.blit(current, (450,375))
     if(heartCount == 3):
         screen.blit(hearts, (0, 0))
