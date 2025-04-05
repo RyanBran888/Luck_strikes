@@ -14,8 +14,8 @@ totalGold = 0
 heartCount = 3
 runOne = False
 Buttons = False
-#font = pygame.font.SysFont("Ariel", 20)
-#Tcolor = (255, 255, 255)
+font = pygame.font.SysFont("Arial", 30)
+Tcolor = (255, 255, 255)
 blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
 screen.blit(blankCard, (950, 200))   
 class Button(object):
@@ -42,9 +42,8 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN: 
             if nextButton.check_press(event.pos):
                 if(runOne):
-                        if(rnd == 4 or rnd == 5 or rnd == 8):
-                            screen.fill((0,0,0))
-                            screen.blit(blankCard, (950, 200))  
+                    screen.fill((0,0,0))
+                    screen.blit(blankCard, (950, 200))
                 print(draws)
                 draws.pop(0)
                 rnd = draws[0]
@@ -131,8 +130,8 @@ while running:
     nextButton.draw(screen)
     endButton.draw(screen)
     screen.blit(current, (450,375))
-    #textsend = font.render(f"Coins: {gold}", True, Tcolor)
-   # screen.blit(textsend, (500, 0))
+    textsend = font.render(f"Coins: {gold}", True, Tcolor)
+    screen.blit(textsend, (500, 0))
     if(heartCount == 8):
         screen.blit(hearts, (0, 0))
         screen.blit(hearts, (50, 0))
