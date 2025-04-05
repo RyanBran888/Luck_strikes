@@ -15,6 +15,8 @@ e = 0
 x = 0
 y = 0
 t = 0
+ree = 0
+beepbeep = 0
 totalGold = 0
 heartCount = 3
 shop = False
@@ -42,6 +44,10 @@ rightButton = Button((0,500), "buttonright.png")
 alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
 while running: 
     if(shop == False):
+        if(ree == 1):
+            screen.fill((0,0,0))
+            screen.blit(blankCard, (950, 200))  
+            ree = 0
         if(draws.__len__() != 5):
                         for i in range(draws.__len__(), 5):
                             draws.append(random.randint(1,25))
@@ -57,9 +63,12 @@ while running:
                     draws.pop(0)
                     rnd = draws[0]
                     runOne = True
+                    if(beepbeep):
+                        beepbeep = False
+                        heartCount = 0
                     current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png'))
                     if(rnd == 1):
-                        heartCount = 0
+                        beepbeep += 1
                     elif(rnd == 2):
                         gold += 5
                     elif(rnd == 3):
@@ -167,6 +176,8 @@ while running:
         pygame.display.flip()
         clock.tick(60)
     elif(shop):
+        if(ree == 0):
+            screen.fill((0,0,0))
         textsend = font.render(f"Coins: {totalGold}", True, Tcolor)
         screen.blit(textsend, (500, 0))
         if(e == 0):
@@ -199,12 +210,7 @@ while running:
                         if(t == 0):    
                             arts.append(pygame.transform.scale(alphabet, (32,40)))
                             t += 1
-                            for i in arts:
-                                screen.blit(i, (x,y))
-                                x += 30
-                                if(x == 1280):
-                                    y += 30
-                                    x = 0
+                            
                     elif(q==3):
                         q = 0
                         totalGold -= 5
@@ -213,7 +219,13 @@ while running:
                         y = 0
                         screen.fill((0,0,0))
                         alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
-                        
+                        for i in arts:
+                                screen.blit(i, (x,y))
+                                x += 30
+                                if(x == 1280):
+                                    y += 30
+                                    x = 0
+        ree = 1
         nextButton.draw(screen)
         screen.blit(alphabet, (500, 200))            
         pygame.display.flip()
