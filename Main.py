@@ -6,8 +6,8 @@ pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
-hearts = pygame.image.load(os.path.join('Artwork/Heart.png'))
-current = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.png'))
+hearts = pygame.image.load(os.path.join('Luck_strikes', 'Artwork/Heart.png'))
+current = pygame.image.load(os.path.join('Luck_strikes', 'Artwork/DRAW CARD ANIMATION.png'))
 draws = []
 arts = []
 gold = 0
@@ -25,11 +25,11 @@ runOne = False
 Buttons = False
 font = pygame.font.SysFont("Tahoma", 30)
 Tcolor = (255, 255, 255)
-blankCard = pygame.image.load(os.path.join('Artwork/DRAW CARD ANIMATION.PNG'))
+blankCard = pygame.image.load(os.path.join('Luck_strikes', 'Artwork/DRAW CARD ANIMATION.png'))
 screen.blit(blankCard, (950, 200))   
 class Button(object):
     def __init__(self, position, filename):
-        self.image = pygame.image.load(os.path.join(f'Artwork/{filename}'))
+        self.image = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', filename))
         self.rect = self.image.get_rect(topleft=position)
     def draw(self,surface):
         surface.blit(self.image,self.rect)
@@ -41,7 +41,7 @@ nextButton = Button((1180,670), "Drawcard.png")
 endButton = Button((0,670), "Endround.png")
 leftButton = Button((1180,500), "leftButton.png")
 rightButton = Button((0,500), "buttonright.png")
-alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
+alphabet = pygame.image.load(os.path.join('Luck_strikes', 'Artwork/pack1.png'))
 while running: 
     if(shop == False):
         if(ree == 1):
@@ -66,7 +66,7 @@ while running:
                     if(beepbeep):
                         beepbeep = False
                         heartCount = 0
-                    current = pygame.image.load(os.path.join(f'Artwork/card{rnd}.png'))
+                    current = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'{rnd}.png'))
                     if(rnd == 1):
                         beepbeep += 1
                     elif(rnd == 2):
@@ -74,9 +74,9 @@ while running:
                     elif(rnd == 3):
                         gold += 10
                     elif(rnd == 4):
-                        screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[1]}.png')), (100, 100))
-                        screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[2]}.png')), (450, 25))
-                        screen.blit(pygame.image.load(os.path.join(f'Artwork/card{draws[3]}.png')), (800, 100))
+                        screen.blit(pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'card{draws[1]}.png')), (100, 100))
+                        screen.blit(pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'card{draws[2]}.png')), (450, 25))
+                        screen.blit(pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'card{draws[3]}.png')), (800, 100))
                     elif(rnd == 5):
                         heartCount = heartCount - 1
                     elif(rnd == 6):
@@ -211,12 +211,12 @@ while running:
                         print("eaeaeae")
                         screen.fill((0,0,0))
                         
-                        alphabet = pygame.image.load(os.path.join('Artwork/pack3.png'))
+                        alphabet = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', 'pack3.png'))
                     if(q == 2):
                         r = random.randrange(1, 10)
                         
                         screen.fill((0,0,0))
-                        alphabet = pygame.image.load(os.path.join(f'Artwork/a{r}.png'))
+                        alphabet = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'a{r}.png'))
                         if(t == 0):    
                             arts.append(pygame.transform.scale(alphabet, (32,40)))
                             t += 1
@@ -228,7 +228,7 @@ while running:
                         x = 0
                         y = 0
                         screen.fill((0,0,0))
-                        alphabet = pygame.image.load(os.path.join('Artwork/pack1.png'))
+                        alphabet = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', 'pack1.png'))
                         for i in arts:
                                 screen.blit(i, (x,y))
                                 x += 30
