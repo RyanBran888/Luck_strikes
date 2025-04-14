@@ -66,7 +66,7 @@ while running:
                     if(beepbeep):
                         beepbeep = False
                         heartCount = 0
-                    current = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'{rnd}.png'))
+                    current = pygame.image.load(os.path.join('Luck_strikes', 'Artwork', f'card{rnd}.png'))
                     if(rnd == 1):
                         beepbeep += 1
                     elif(rnd == 2):
